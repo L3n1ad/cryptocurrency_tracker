@@ -6,13 +6,15 @@
 </template>
 
 <script>
-import CurrenciesList from './components/currencyList.vue'
+import CurrenciesList from './components/currencyList.vue';
+import {eventBus} from './main.js';
 
 export default {
   name: 'app',
   data(){
     return {
-      currencies: null
+      currencies: null,
+      selectedCurrency: null
     }
   },
   mounted(){
@@ -20,6 +22,8 @@ export default {
   .then(response => response.json())
   .then(data => this.currencies = data)
   .then(() => this.sortDataByName())
+
+  eventBus.$on('selected-currency', (currency) => {this.selectedCurrency = currency;})
 },
 methods:{
   sortDataByName(){
