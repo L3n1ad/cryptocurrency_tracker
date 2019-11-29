@@ -2,11 +2,13 @@
   <div class="main-container">
     <h1>Cryptocurrency Tracker</h1>
     <currencies-list :currencies="currencies"></currencies-list>
+    <currency-detail v-if='selectedCurrency' :currency='selectedCurrency'></currency-detail>
   </div>
 </template>
 
 <script>
 import CurrenciesList from './components/currencyList.vue';
+import CurrencyDetail from './components/currencyDetail.vue'
 import {eventBus} from './main.js';
 
 export default {
@@ -31,7 +33,8 @@ methods:{
   }
 },
 components: {
-  'currencies-list': CurrenciesList
+  'currencies-list': CurrenciesList,
+  'currency-detail': CurrencyDetail
 }
 }
 </script>
