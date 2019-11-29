@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="diagram">
     <button v-on:click="handleClick">See Diagram</button>
-    <select v-model="timePeriod">
+    <select v-on:change="handleClick" v-model="timePeriod">
       <option value="1">Last 24 hours</option>
       <option value="7">Last 7 days</option>
       <option value="30">Last 30 days</option>
