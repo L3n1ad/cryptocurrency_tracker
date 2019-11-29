@@ -16,7 +16,8 @@ export default {
   data(){
     return {
       currencies: null,
-      selectedCurrency: null
+      selectedCurrency: null,
+      rawData: null
     }
   },
   mounted(){
