@@ -1,28 +1,30 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="html">
+  <div class="main-container">
+    <h1>Cryptocurrency Tracker</h1>
+    <currencies-list :currencies="currencies"></currencies-list>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CurrenciesList from './components/currencyList.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  data(){
+    return {
+      currencies: null
+    }
+  },
+  mounted(){
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h%2C7d%2C30d')
+  .then(response => response.json())
+  .then(data => this.currencies = data)
+},
+components: {
+  'currencies-list': CurrenciesList
+}
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
