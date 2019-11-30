@@ -1,7 +1,8 @@
 <template lang="html">
   <form v-on:submit.prevent>
     <currencies-list :currencies='currencies'></currencies-list>
-    <input type='text' v-model='search' placeholder='search for country...' v-on:keyup='handleSearch'>
+    <input type='text' v-model='search' placeholder='search for country...' v-on:input='handleSearch'>
+    <a href="http://localhost:8080/">Refresh search</a>
   </form>
 </template>
 
@@ -11,19 +12,14 @@ import {eventBus} from '../main.js';
 
 export default {
   name: 'search-form',
+  props: ['currencies'],
   data(){
     return {
-      currencies: [],
       search: ""
     }
   },
   mounted(){
-    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h%2C7d%2C30d')
-    .then(response => response.json())
-    .then(data => this.currencies = data)
-    .then(() => this.sortDataByName())
-
-
+    eventBus.$on('selected-currency', currency => this.search = currency.name)
   },
   computed: {
     filteredCurrency(){
@@ -33,9 +29,6 @@ export default {
     }
   },
   methods:{
-    sortDataByName(){
-      this.currencies = this.currencies.sort((dataA, dataB) => (dataA.name > dataB.name) ? 1 : (dataB.name > dataA.name) ? -1: 0)
-    },
     handleSearch(){
       eventBus.$emit('filtered-currency', this.filteredCurrency)
     }
