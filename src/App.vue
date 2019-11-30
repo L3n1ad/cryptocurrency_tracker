@@ -1,42 +1,32 @@
 <template lang="html">
   <div class="main-container">
     <h1>Cryptocurrency Tracker</h1>
-    <currencies-list :currencies="currencies"></currencies-list>
-    <currency-detail v-if='selectedCurrency' :currency='selectedCurrency'></currency-detail>
+    <search-form></search-form>
+    <currency-detail v-for="currency in filteredCurrency" :currency="currency"></currency-detail>
   </div>
 </template>
 
 <script>
-import CurrenciesList from './components/currencyList.vue';
 import CurrencyDetail from './components/currencyDetail.vue'
 import {eventBus} from './main.js';
+import SearchForm from './components/searchForm.vue'
 
 export default {
   name: 'app',
   data(){
     return {
-      currencies: null,
       selectedCurrency: null,
-      rawData: null
+      filteredCurrency: []
     }
   },
   mounted(){
-    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h%2C7d%2C30d')
-  .then(response => response.json())
-  .then(data => this.currencies = data)
-  .then(() => this.sortDataByName())
-
   eventBus.$on('selected-currency', (currency) => {this.selectedCurrency = currency;})
-},
-methods:{
-  sortDataByName(){
-    this.currencies = this.currencies.sort((dataA, dataB) => (dataA.name > dataB.name) ? 1 : (dataB.name > dataA.name) ? -1: 0)
+  eventBus.$on('filtered-currency', currencies => this.filteredCurrency = currencies)
+  },
+  components: {
+    'currency-detail': CurrencyDetail,
+    'search-form': SearchForm
   }
-},
-components: {
-  'currencies-list': CurrenciesList,
-  'currency-detail': CurrencyDetail
-}
 }
 </script>
 

@@ -13,7 +13,7 @@ export default {
   props: ['currencies'],
   data(){
     return{
-      selectedCurrency: null,
+      selectedCurrency: null
     }
   },
   components: {
