@@ -9,7 +9,7 @@
         <th>24h</th>
         <th>7d</th>
         <th>30d</th>
-        <th>Diagram</th>
+        <th>See More</th>
       </tr>
     </thead>
     <tbody>
