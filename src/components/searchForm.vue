@@ -1,8 +1,11 @@
 <template lang="html">
-  <form v-on:submit.prevent>
-    <currencies-list :currencies='currencies'></currencies-list>
-    <input type='text' v-model='search' placeholder='search for country...' v-on:input='handleSearch'>
-    <a href="http://localhost:8080/">Refresh search</a>
+  <form class='form-group' v-on:submit.prevent>
+    <label for="dropdown">Dropdown menu to select:</label>
+    <currencies-list class='btn btn-sm':currencies='currencies'></currencies-list>
+    <hr>
+    <label for="searchbar">Type the name of a currency:</label>
+    <input class="form-control" type='text' v-model='search' placeholder='search for country...' v-on:input='handleSearch'>
+    <a class='btn btn-link' href="http://localhost:8080/">Refresh search</a>
   </form>
 </template>
 
@@ -40,4 +43,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .btn{
+    margin-left: 10px;
+  }
 </style>

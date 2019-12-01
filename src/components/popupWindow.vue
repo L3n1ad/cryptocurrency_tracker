@@ -1,6 +1,6 @@
 <template lang="html">
   <div id='app'>
-    <button class="btn btn-primary" @click="showDetails">More Details</button>
+    <button class="btn btn-sm btn-dark" @click="showDetails">More Details</button>
 
     <stack-modal
       :show="show"
@@ -8,17 +8,17 @@
       @close="show=false"
     >
       <div v-if='currencyDetail'>
-        <h1>{{currency.name}}</h1>
-        <p>Coin Gecko rank: {{currencyDetail.coingecko_rank}}</p>
-        <p>Coin Gecko score: {{currencyDetail.coingecko_score}}</p>
-        <p>Facebook likes: {{currencyDetail.community_data.facebook_likes}}</p>
-        <p>Twitter Followers: {{currencyDetail.community_data.twitter_followers}}</p>
-        <p>Reddit Subscribers: {{currencyDetail.community_data.reddit_subscribers}}</p>
-        <p>Avarage Reddit posts in the last 48H: {{currencyDetail.community_data.reddit_average_posts_48h}}</p>
-        <p>Origin Country: {{currencyDetail.country_origin}}</p>
+        <img class='img-thumbnail rounded' :src="currency.image" style="max-width: 100px">
+        <p><strong>Coin Gecko rank:</strong> {{currencyDetail.coingecko_rank}}</p>
+        <p> <strong> Coin Gecko score:</strong>{{currencyDetail.coingecko_score}}</p>
+        <p><strong>Facebook likes:</strong> {{currencyDetail.community_data.facebook_likes}}</p>
+        <p><strong>Twitter Followers:</strong> {{currencyDetail.community_data.twitter_followers}}</p>
+        <p><strong>Reddit Subscribers:</strong> {{currencyDetail.community_data.reddit_subscribers}}</p>
+        <p><strong>Avarage Reddit posts in the last 48H:</strong> {{currencyDetail.community_data.reddit_average_posts_48h}}</p>
+        <p><strong>Origin Country:</strong> {{currencyDetail.country_origin}}</p>
         <h3>Description</h3>
         <p>{{currencyDetail.description.en}}</p>
-        <a :href='homePageUrl' target="_blank">Home page of {{currency.name}}</a>
+        <a class='btn btn-dark btn-sm':href='homePageUrl' target="_blank">Home page of {{currency.name}}</a>
         <hr>
         <currency-diagram :currency='currency'></currency-diagram>
       </div>
@@ -62,4 +62,12 @@ export default {
 
 <style>
     @import "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
+    .img-thumbnail {
+      margin-bottom: 20px;
+    }
+
+  .btn-primary {
+        display: none;
+      }
+
 </style>

@@ -1,13 +1,13 @@
 <template lang="html">
   <tr>
-    <td><img :src="currency.image" style="max-width: 30px"></td>
-    <td>{{currency.name}}</td>
+    <th scope="row">{{currency.name}}</th>
+    <td><img class="rounded mx-auto d-block" :src="currency.image" style="max-width: 30px"></td>
     <td>{{currency.symbol}}</td>
     <td>GBP {{currency.current_price.toFixed(2)}}</td>
     <td>{{currency.price_change_percentage_24h_in_currency.toFixed(2)}}</td>
     <td>{{currency.price_change_percentage_7d_in_currency.toFixed(2)}}</td>
     <td>{{currency.price_change_percentage_30d_in_currency.toFixed(2)}}</td>
-    <popup-window :currency='currency'></popup-window>
+    <td><popup-window :currency='currency'></popup-window></td> 
 
   </tr>
 </template>

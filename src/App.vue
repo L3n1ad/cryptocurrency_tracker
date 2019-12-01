@@ -1,17 +1,11 @@
 <template lang="html">
   <div class="main-container">
+    <div class="jumbotron">
+      <h1 class='display-4'>Cryptocurrency Tracker</h1>
+      <hr>
+      <search-form :currencies="currencies"></search-form>
+    </div>
 
-    <h1>Cryptocurrency Tracker</h1>
-
-    <search-form :currencies="currencies"></search-form>
-
-    <!-- <currency-detail v-if="selectedCurrency" :currency="selectedCurrency"></currency-detail>
-
-    if I change the order of the if and else it will slow the app down drastically and it will probably break it WHY?
-
-    <currency-detail v-else v-for="currency in filteredCurrency" :currency="currency"></currency-detail>
-
-    <currency-detail v-if="noFilteredCurrency" v-for="currency in currencies" :currency="currency"></currency-detail> -->
 
     <currency-table :currencies='currencies' :filteredCurrency='filteredCurrency' :selectedCurrency='selectedCurrency' :noFilteredCurrency='noFilteredCurrency'></currency-table>
 

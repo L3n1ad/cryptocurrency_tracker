@@ -1,15 +1,15 @@
 <template lang="html">
-  <table>
-    <thead>
+  <table class='table table-bordered table-hover'>
+    <thead class='thead-dark'>
       <tr>
-        <th>Icon</th>
-        <th>Name</th>
-        <th>Symbol</th>
-        <th>Price</th>
-        <th>24h</th>
-        <th>7d</th>
-        <th>30d</th>
-        <th>See More</th>
+        <th scope="col">Name</th>
+        <th scope="col">Icon</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Price</th>
+        <th scope="col">24h</th>
+        <th scope="col">7d</th>
+        <th scope="col">30d</th>
+        <th scope="col">See More</th>
       </tr>
     </thead>
     <tbody>

@@ -1,10 +1,13 @@
 <template lang="html">
   <div class="diagram">
-    <button v-on:click="handleClick">See Diagram</button>
-    <select v-on:change="handleClick" v-model="timePeriod">
+    <button class='btn btn-dark btn-sm'v-on:click="handleClick">See Diagram</button>
+    <select class='btn btn-dark btn-sm'v-on:change="handleClick" v-model="timePeriod">
       <option value="1">Last 24 hours</option>
       <option value="7">Last 7 days</option>
       <option value="30">Last 30 days</option>
+      <option value="170">Last 6 months</option>
+      <option value="365">1 year</option>
+      <option value="730">2 years</option>
     </select>
     <GChart
       type="AreaChart"
@@ -28,7 +31,7 @@ export default {
       chartOptions: {
         width: 480,
         // curveType: 'function',
-        colors: ['#3b687f'],
+        colors: ['#5e6b77'],
         legend: {position: 'none'},
       }
     }
@@ -56,4 +59,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .btn {
+    margin: 6px;
+  }
 </style>
