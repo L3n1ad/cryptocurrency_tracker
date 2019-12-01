@@ -1,7 +1,7 @@
 <template lang="html">
   <form class='form-group' v-on:submit.prevent>
     <label for="dropdown">Dropdown menu to select:</label>
-    <currencies-list class='btn btn-sm':currencies='currencies'></currencies-list>
+    <currencies-list class='btn btn-dark btn-sm':currencies='currencies'></currencies-list>
     <hr>
     <label for="searchbar">Type the name of a currency:</label>
     <input class="form-control" type='text' v-model='search' placeholder='search for country...' v-on:input='handleSearch'>
