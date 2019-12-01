@@ -26,8 +26,10 @@ export default {
       sortedData: null,
       timePeriod: "1",
       chartOptions: {
+        width: 480,
+        // curveType: 'function',
         colors: ['#3b687f'],
-        title: `Diagram for the last days for `
+        legend: {position: 'none'},
       }
     }
   },
